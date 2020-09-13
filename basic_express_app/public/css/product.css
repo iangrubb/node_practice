@@ -1,0 +1,35 @@
+.product-form {
+    width: 30rem;
+    max-width: 90%;
+    margin: auto;
+}
+
+.form-control {
+    margin: 1rem 0;
+}
+
+.form-control label,
+.form-control input {
+    display: block;
+    width: 100%;
+}
+
+.form-control input {
+    border: 1px solid rgb(50, 25, 141);
+    border-radius: 2px;
+    font: inherit;
+}
+
+.product-card {
+    width: 24rem;
+    padding: 2rem;
+    max-width: 90%;
+    margin: 1rem auto;
+    background: #eee;
+    box-shadow: 2px 2px 8px #bbb;
+    border-radius: 8px;
+}
+
+.product-title {
+    color: rgb(50, 25, 141);
+}
