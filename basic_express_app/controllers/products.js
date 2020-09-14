@@ -1,11 +1,13 @@
 
-const products = []
+const Product = require('../models/products')
 
 module.exports.index = (req, res, next) => {
-    res.render('shop', {
-        products,
-        pageTitle: 'Shop',
-        path: '/'
+    Product.all(products => {
+        res.render('shop', {
+            products,
+            pageTitle: 'Shop',
+            path: '/'
+        })
     })
 }
 
@@ -18,8 +20,7 @@ module.exports.new = (req, res, next) => {
 
 module.exports.create = (req, res, next) => {
     const { title } = req.body
-    products.push({ title })
+    const product = new Product(title)
+    product.save()
     res.redirect('/')
 }
-
-module.exports.products = products
