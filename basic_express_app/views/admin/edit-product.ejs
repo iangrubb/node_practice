@@ -2,6 +2,7 @@
 
 
 <%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/product.css">
 
 </head>
 <body>
@@ -9,5 +10,7 @@
 <%- include('../includes/navigation.ejs') %>
 
 <h1>Edit Product</h1>
+
+<%- include('./product-form.ejs', {product: product, editing: true}) %>
 
 <%- include('../includes/end.ejs') %>

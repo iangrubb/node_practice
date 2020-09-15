@@ -9,12 +9,14 @@
 }
 
 .form-control label,
-.form-control input {
+.form-control input,
+.form-control textarea {
     display: block;
     width: 100%;
 }
 
-.form-control input {
+.form-control input,
+.form-control textarea {
     border: 1px solid rgb(50, 25, 141);
     border-radius: 2px;
     font: inherit;
@@ -32,4 +34,8 @@
 
 .product-title {
     color: rgb(50, 25, 141);
+}
+
+.product-image {
+    width: 100%;
 }

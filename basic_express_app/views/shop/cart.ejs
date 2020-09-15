@@ -9,4 +9,24 @@
 
 <h1>Your Cart</h1>
 
+<% if (products.length > 0) { %>
+    <ul>
+        <% products.forEach( p => { %>
+            <li>
+                <p><a href="/products/<%= p.id %>"   ><%= p.title %></a>    x<%= p.quantity %> ($<%= p.quantity * p.price%>)</p>
+                <form action="/cart-item-delete/<%= p.id %>" method="POST">
+                    <button type="submit">Remove from Cart</button>
+                </form>
+                
+                
+                </li>
+        <% }) %>
+    </ul>
+<% } else { %>
+    <h3>Your Cart is Empty</h3>
+
+<% } %>
+
+
+
 <%- include('../includes/end.ejs') %>

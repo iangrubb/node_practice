@@ -1,0 +1,49 @@
+<form
+    class="product-form"
+    action="/admin/product<%= editing ? "/" + product.id : "" %>"
+    method="POST"
+>
+
+
+    <div class="form-control">
+        <label for="title">Product Title</label>
+        <input
+            type="text"
+            name="title"
+            id="title"
+            value=<%= product ? product.title : "" %>
+        >
+    </div>
+
+    <div class="form-control">
+        <label for="imageUrl">Image URL</label>
+        <input
+            type="text"
+            name="imageUrl"
+            id="imageUrl"
+            value=<%= product ? product.imageUrl : "" %>
+        >
+    </div>
+
+    <div class="form-control">
+        <label for="price">Price</label>
+        <input
+            type="number"
+            name="price"
+            id="price"
+            value="<%= product ? product.price : "" %>"
+            step="0.01"
+        >
+    </div>
+
+    <div class="form-control">
+        <label for="description">Description</label>
+        <textarea
+            name="description"
+            id="description"
+            rows="5"
+        ><%= product ? product.description : "" %></textarea>
+    </div>
+    
+    <button type="submit"><%= editing ? "Edit" : "Add" %> Product</button>
+</form>
