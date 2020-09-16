@@ -1,31 +1,60 @@
+const { ObjectId } = require('mongodb')
+const { getDb } = require('../../database')
 
-const Sequelize = require('sequelize')
+class Product {
+    constructor({title, price, description, imageUrl}){
+        this.title = title
+        this.price = price
+        this.description = description
+        this.imageUrl = imageUrl
+    }
 
-const sequelize = require('../../database')
+    save() {
+        const db = getDb()
+        return db.collection('products').insertOne(this)
+    }
 
-const Product = sequelize.define('product', {
-    id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        allowNull: false,
-        primaryKey: true
-    },
-    title: Sequelize.STRING,
-    price: {
-        type: Sequelize.DOUBLE,
-        allowNull: false
-    },
-    imageUrl: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-    description: {
-        type: Sequelize.STRING,
-        allowNull: false
-    },
-})
+    static fetchAll() {
+        // Just db.collection('products').find() returns a cursor, use toArray() to get an array
+        const db = getDb()
+        return db.collection('products').find().toArray()
+    }
+
+    static fetchById(id) {
+        const db = getDb()
+        return db.collection('products').find({_id: new ObjectId(id)}).next()
+    }
+}
 
 module.exports = Product
+
+// const Sequelize = require('sequelize')
+
+// const sequelize = require('../../database')
+
+// const Product = sequelize.define('product', {
+//     id: {
+//         type: Sequelize.INTEGER,
+//         autoIncrement: true,
+//         allowNull: false,
+//         primaryKey: true
+//     },
+//     title: Sequelize.STRING,
+//     price: {
+//         type: Sequelize.DOUBLE,
+//         allowNull: false
+//     },
+//     imageUrl: {
+//         type: Sequelize.STRING,
+//         allowNull: false
+//     },
+//     description: {
+//         type: Sequelize.STRING,
+//         allowNull: false
+//     },
+// })
+
+// module.exports = Product
 
 
 
