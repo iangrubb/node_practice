@@ -1,32 +1,70 @@
-const { ObjectId } = require('mongodb')
-const { getDb } = require('../../database')
 
-class Product {
-    constructor({title, price, description, imageUrl}){
-        this.title = title
-        this.price = price
-        this.description = description
-        this.imageUrl = imageUrl
+const { Schema, model } = require('mongoose')
+
+
+const productSchema = new Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    imageUrl: {
+        type: String,
+        required: true
     }
 
-    save() {
-        const db = getDb()
-        return db.collection('products').insertOne(this)
-    }
+})
 
-    static fetchAll() {
-        // Just db.collection('products').find() returns a cursor, use toArray() to get an array
-        const db = getDb()
-        return db.collection('products').find().toArray()
-    }
 
-    static fetchById(id) {
-        const db = getDb()
-        return db.collection('products').find({_id: new ObjectId(id)}).next()
-    }
-}
+module.exports = model('Product', productSchema)
 
-module.exports = Product
+
+
+
+
+// Vanilla MongoDB Setup
+
+// const { ObjectId } = require('mongodb')
+// const { getDb } = require('../../database')
+
+// class Product {
+//     constructor({title, price, description, imageUrl}){
+//         this.title = title
+//         this.price = price
+//         this.description = description
+//         this.imageUrl = imageUrl
+//     }
+
+//     save() {
+//         const db = getDb()
+//         return db.collection('products').insertOne(this)
+//     }
+
+//     static fetchAll() {
+//         // Just db.collection('products').find() returns a cursor, use toArray() to get an array
+//         const db = getDb()
+//         return db.collection('products').find().toArray()
+//     }
+
+//     static fetchById(id) {
+//         const db = getDb()
+//         return db.collection('products').find({_id: new ObjectId(id)}).next()
+//     }
+// }
+
+// module.exports = Product
+
+
+
+
+// Sequelize Setup
 
 // const Sequelize = require('sequelize')
 
@@ -60,6 +98,8 @@ module.exports = Product
 
 
 
+// Vanilla MySQL setup
+
 // const db = require('../../database')
 
 // module.exports = class Product {
@@ -86,9 +126,5 @@ module.exports = Product
 //     static all() {
 //         return db.execute('SELECT * FROM products')
 //     }
-
-
-
-
 
 // }

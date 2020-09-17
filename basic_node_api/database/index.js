@@ -1,33 +1,37 @@
 
 
-const { MongoClient } = require('mongodb')
+// const { MongoClient } = require('mongodb')
 
-let _db;
+// let _db;
 
-const mongoConnect = (callback) => {
+// const mongoConnect = (callback) => {
 
-    MongoClient.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0.yuejs.mongodb.net/<dbname>?retryWrites=true&w=majority`, { useUnifiedTopology: true })
-    .then(client => {
-        console.log("Connected to MongoDB")
-        _db = client.db()
-        callback(client)
-    })
-    .catch(error => console.log("Failure to connect to MongoDB:", error))
+//     MongoClient.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0.yuejs.mongodb.net/<dbname>?retryWrites=true&w=majority`, { useUnifiedTopology: true })
+//     .then(client => {
+//         console.log("Connected to MongoDB")
+//         _db = client.db()
+//         callback(client)
+//     })
+//     .catch(error => console.log("Failure to connect to MongoDB:", error))
 
-}
+// }
 
-const getDb = () => {
-    if (_db) {
-        return _db
-    } else {
-        return undefined
-    }
-}
+// const getDb = () => {
+//     if (_db) {
+//         return _db
+//     } else {
+//         return undefined
+//     }
+// }
 
 
 
-module.exports.mongoConnect = mongoConnect
-module.exports.getDb = getDb
+// module.exports.mongoConnect = mongoConnect
+// module.exports.getDb = getDb
+
+
+
+
 
 
 
